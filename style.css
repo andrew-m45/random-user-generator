@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+
+.heading__main{
+    padding: 40px;
+    color: #2c3e50;
+    font-size: 35px;
+
+}
+
+.profile__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.profile__card{
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.profile__img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    display: block;
+}
+
+.profile__name{
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #16a085;
+    margin-bottom: 6px;
+}
+
+.profile__username{
+    font-weight: bold; 
+    color: #0575E6;
+    font-size: 14px;
+
+}
+
+.profile__detail{
+    margin-top: 20px;
+    display: flex;
+   flex-direction: column;
+}
+
+
+.profile__detail .item{
+    margin-top: 10px;
+    font-size: .9em;
+}
+
+.profile__detail .item i{
+    margin-right: 5px;
+}
+
+.cta__btn{
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    outline: none;
+    border: none;
+    background:  #16a085;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-align: center;
+    transition: all 300ms;
+}
+
+.cta__btn:hover{
+    background: #1cbbab;
+}

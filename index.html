@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Random User Generator</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Vue CDN -->
+    <script src="https://unpkg.com/vue@3.0.5"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="profile__wrapper">
+            <h2 class="heading__main">Random User Generator</h2>
+            <div class="profile__card" v-for="user in userArray">
+                <img class="profile__img" :src="user.picture.large" alt="user">
+                <div class="profile__name"> {{ user.name.first }} {{ user.name.last }} </div>
+                <div class="profile__username">@{{ user.login.username }}</div>
+                <div class="profile__detail">
+                    <div class="item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        {{ user.location.city }}, {{ user.location.country }}
+                    </div>
+                    <div class="item">
+                        <i class="fa-solid fa-envelope-open"></i>
+                        {{ user.email }}
+                    </div>
+                    <div class="item">
+                        <i class="fa-solid fa-phone"></i>
+                        {{ user.cell }}
+                    </div>
+                    <button class="cta__btn" @click="generateNewUser">Generate Random User</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Vue instance
+        const app = Vue.createApp({
+            data() {
+                return {
+                    userArray: [], // array to hold user
+                }
+            },
+            created: async function () {
+                // fetch user object from fetchUser method & assign it to user array
+                this.userArray = await this.fetchUser()
+            },
+            methods: {
+                async fetchUser() {
+                    // fetching user data from API
+                    const response = await fetch('https://randomuser.me/api');
+                    const { results } = await response.json();
+                    return results
+                },
+                async generateNewUser() {
+                    // get new user and assign it to user array 
+                    this.userArray = await this.fetchUser()
+                }
+            }
+
+        })
+
+        // Mount vue on DOM element
+        app.mount('#app')
+
+    </script>
+
+</body>
+
+</html>
